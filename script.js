@@ -21,5 +21,25 @@ Höjd på canvas: ${canvas.height}`
 
 function drawPicture() {
   // Här skriver du funktionen som ritar bilden
+  const rectanglePositionX = midX / 25;
+  const rectanglePositionY = midY * 1.98;
+  const rectangleX = midX / 1.5;
+  const rectangleY = midY / -1.5
+  const rectanglePositionXInverted = midX + (midX - rectanglePositionX - rectangleX);
+  c.beginPath();
+  c.lineWidth = "2";
+  c.strokeStyle = "black";
+  c.rect(rectanglePositionX, rectanglePositionY, rectangleX, rectangleY);
+  c.stroke();
+  c.beginPath();
+  c.lineWidth = "2";
+  c.strokeStyle = "black";
+  c.rect(rectanglePositionXInverted, rectanglePositionY, rectangleX, rectangleY);
+  c.stroke();
+  c.beginPath();
+  c.moveTo(rectanglePositionX, rectanglePositionY + rectangleY);
+  c.lineTo(rectanglePositionX + (rectangleX / 2), midY / 2);
+  c.lineTo(rectanglePositionX + rectangleX, rectanglePositionY + rectangleY);
+  c.stroke();
 }
 drawPicture();
