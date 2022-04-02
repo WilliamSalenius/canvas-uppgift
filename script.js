@@ -21,25 +21,37 @@ Höjd på canvas: ${canvas.height}`
 
 function drawPicture() {
   // Här skriver du funktionen som ritar bilden
+  c.lineWidth = "2";
+  c.strokeStyle = "black";
   const rectanglePositionX = midX / 25;
   const rectanglePositionY = midY * 1.98;
-  const rectangleX = midX / 1.5;
-  const rectangleY = midY / -1.5
-  const rectanglePositionXInverted = midX + (midX - rectanglePositionX - rectangleX);
-  c.beginPath();
-  c.lineWidth = "2";
-  c.strokeStyle = "black";
-  c.rect(rectanglePositionX, rectanglePositionY, rectangleX, rectangleY);
+  const rectangleWidth = midX / 1.5;
+  const rectangleHeight = midY / -1.5
+  const rectanglePositionXInverted = midX + (midX - rectanglePositionX - rectangleWidth);
+  const treePositionX = midX - midX/20;
+  const treeXPositionY = midY * 2;
+  const treeX = 2 * (midX - treePositionX);
+  const treeY = midY / -2.5
+  c.beginPath(); // Ritar den vänstra rektanglen
+  c.rect(rectanglePositionX, rectanglePositionY, rectangleWidth, rectangleHeight);
   c.stroke();
-  c.beginPath();
-  c.lineWidth = "2";
-  c.strokeStyle = "black";
-  c.rect(rectanglePositionXInverted, rectanglePositionY, rectangleX, rectangleY);
+  c.beginPath(); // Ritar den högra rektangeln
+  c.rect(rectanglePositionXInverted, rectanglePositionY, rectangleWidth, rectangleHeight);
   c.stroke();
-  c.beginPath();
-  c.moveTo(rectanglePositionX, rectanglePositionY + rectangleY);
-  c.lineTo(rectanglePositionX + (rectangleX / 2), midY / 2);
-  c.lineTo(rectanglePositionX + rectangleX, rectanglePositionY + rectangleY);
+  c.beginPath(); // Ritar vänstra taket
+  c.moveTo(rectanglePositionX, rectanglePositionY + rectangleHeight);
+  c.lineTo(rectanglePositionX + (rectangleWidth / 2), midY / 2);
+  c.lineTo(rectanglePositionX + rectangleWidth, rectanglePositionY + rectangleHeight);
+  c.stroke();
+  c.beginPath(); // Ritar högra taket
+  c.moveTo(rectanglePositionXInverted, rectanglePositionY + rectangleHeight);
+  c.lineTo(rectanglePositionXInverted + (rectangleWidth / 2), midY / 2);
+  c.lineTo(rectanglePositionXInverted + rectangleWidth, rectanglePositionY + rectangleHeight);
+  c.stroke();
+  c.beginPath() // Ritar stammen på trädet
+  c.rect(treePositionX, treeXPositionY, treeX, treeY);
+  c.fillStyle = "#a52a2a";
+  c.fillRect(treePositionX, treeXPositionY, treeX, treeY);
   c.stroke();
 }
 drawPicture();
