@@ -26,10 +26,10 @@ function drawPicture() {
   const rectanglePositionX = midX / 25;
   const rectanglePositionY = midY * 1.98;
   const rectangleWidth = midX / 1.5;
-  const rectangleHeight = midY / -1.5
+  const rectangleHeight = midY / -1.5;
   const rectanglePositionXInverted = midX + (midX - rectanglePositionX - rectangleWidth);
   const treePositionX = midX - midX/20;
-  const treeXPositionY = midY * 2;
+  const treePositionY = midY * 2;
   const treeX = 2 * (midX - treePositionX);
   const treeY = midY / -2.5
   c.beginPath(); // Ritar den vänstra rektanglen
@@ -49,9 +49,17 @@ function drawPicture() {
   c.lineTo(rectanglePositionXInverted + rectangleWidth, rectanglePositionY + rectangleHeight);
   c.stroke();
   c.beginPath() // Ritar stammen på trädet
-  c.rect(treePositionX, treeXPositionY, treeX, treeY);
-  c.fillStyle = "#a52a2a";
-  c.fillRect(treePositionX, treeXPositionY, treeX, treeY);
+  c.moveTo(treePositionX, treePositionY);
+  c.lineTo(treePositionX, treePositionY + treeY);
+  c.moveTo(treePositionX + treeX, treePositionY)
+  c.lineTo(treePositionX + treeX, treePositionY + treeY)
+  c.fillStyle = "#a52a2a"; // Den exakta färgen på stammen
+  c.fillRect(treePositionX, treePositionY, treeX, treeY);
+  c.stroke();
+  c.beginPath(); // Ritar trädkronan på trädet
+  c.fillStyle = "#008000";
+  c.ellipse(midX, treePositionY + treeY, midX / 12, midX / 1.2, Math.PI*1, 0, Math.PI*1);
+  c.fill();
   c.stroke();
 }
 drawPicture();
