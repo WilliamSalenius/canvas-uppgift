@@ -58,7 +58,7 @@ function drawPicture() {
   c.stroke();
   c.beginPath(); // Ritar trädkronan på trädet
   c.fillStyle = "#008000";
-  c.ellipse(midX, treePositionY + treeY, midX / 12, midX / 2.5, Math.PI*1, 0, Math.PI*1);
+  c.ellipse(midX, treePositionY + treeY * 1.8, midX / 10, midX / 4, Math.PI*1, -0.9, Math.PI + 0.9);
   c.fill();
   c.stroke();
 }
