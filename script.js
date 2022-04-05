@@ -31,7 +31,7 @@ function drawPicture() {
   const treePositionX = midX - midX/20;
   const treePositionY = midY * 2;
   const treeX = 2 * (midX - treePositionX);
-  const treeY = midY / -2.5
+  const treeY = midY / -2.5;
   c.beginPath(); // Ritar den vänstra rektanglen
   c.rect(rectanglePositionX, rectanglePositionY, rectangleWidth, rectangleHeight);
   c.stroke();
@@ -58,7 +58,7 @@ function drawPicture() {
   c.stroke();
   c.beginPath(); // Ritar trädkronan på trädet
   c.fillStyle = "#008000";
-  c.ellipse(midX, treePositionY + treeY * 1.8, midX / 10, midX / 4, Math.PI*1, -0.9, Math.PI + 0.9);
+  c.ellipse(midX, treePositionY + treeY * 1.8, midX / 10, midX / 4, Math.PI, -0.9, Math.PI + 0.9);
   c.fill();
   c.stroke();
 }
